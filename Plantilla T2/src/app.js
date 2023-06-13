@@ -13,7 +13,7 @@ import morgan from 'morgan';
 
 const ENV = process.env;
 const app = express();
-
+const port = 3000;
 //middleware
 app.use(express.json());
 app.use(morgan('dev'));
@@ -83,7 +83,6 @@ app.delete('/personaje_habita_reino/:id', Personaje_habita_reinoController.delet
 // Defensas_reinos endpoints
 app.get('/defensas_reinos', Defensas_reinosController.getAllReinoDefensas);
 app.get('/defensas_reinos/:id', Defensas_reinosController.getReinoDefensaById);
-app.post('/defensas_reinos', Defensas_reinosController.createReinoDefensa);
 app.put('/defensas_reinos/:id', Defensas_reinosController.updateReinoDefensa);
 app.delete('/defensas_reinos/:id', Defensas_reinosController.deleteReinoDefensa);
 
@@ -106,6 +105,6 @@ app.use((_, res) => {
 
 
 //Init server
-app.listen(ENV.API_PORT, () => {
-    console.log(`Server running on port ${ENV.API_PORT}`);
-})
+app.listen(port, () => {
+    console.log('Servidor escuchando en el puerto ${port}');
+  });
